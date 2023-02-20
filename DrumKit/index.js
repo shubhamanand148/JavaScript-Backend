@@ -6,12 +6,24 @@ for (var i=0; i<NumOfDrums; i++){
 
     // This will get the element which has the class drum and we loop through all such elements.
     // Then we add an event listener to those drum elements which will call the function
-    // when the "drum" class element is clicked.
+    // when a "drum" class element is clicked.
     document.querySelectorAll(".drum")[i].addEventListener("click", function(){
 
         var drum_pressed = this.innerHTML;
+        drum_sound(drum_pressed);
+    });
 
-        switch (drum_pressed) {
+
+    // This checks for Keyboard press.
+    document.addEventListener("keypress", function(event){
+
+        drum_sound(event.key);
+    });
+
+
+    function drum_sound(key){
+
+        switch (key) {
             case "w":
                 var audio = new Audio("sounds/tom-1.mp3");
                 audio.play();
@@ -48,7 +60,7 @@ for (var i=0; i<NumOfDrums; i++){
                 break;
 
             default:
-                console.log(drum_pressed);
+                console.log(key);
         }
-    });
+    }
 }
