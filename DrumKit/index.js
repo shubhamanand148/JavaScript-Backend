@@ -11,6 +11,7 @@ for (var i=0; i<NumOfDrums; i++){
 
         var drum_pressed = this.innerHTML;
         drum_sound(drum_pressed);
+        animate_button(drum_pressed);
     });
 
 
@@ -18,6 +19,7 @@ for (var i=0; i<NumOfDrums; i++){
     document.addEventListener("keypress", function(event){
 
         drum_sound(event.key);
+        animate_button(event.key);
     });
 
 
@@ -62,5 +64,19 @@ for (var i=0; i<NumOfDrums; i++){
             default:
                 console.log(key);
         }
+    }
+
+
+    //This function changes the button style  after it is pressed.
+    function animate_button(key){
+
+        //This will change the button style once it is pressed.
+        var key_pressed = document.querySelector("."+key);
+        key_pressed.classList.add("pressed");
+
+        // This will restore the button style to unpressed style, 2msec after pressing it.
+        setTimeout(function(){
+            key_pressed.classList.remove("pressed");
+        }, 200);
     }
 }
