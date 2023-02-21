@@ -74,7 +74,7 @@ for (var i=0; i<NumOfDrums; i++){
         var key_pressed = document.querySelector("."+key);
         key_pressed.classList.add("pressed");
 
-        // This will restore the button style to unpressed style, 2msec after pressing it.
+        // This will restore the button style to unpressed style, 2msec after pressed.
         setTimeout(function(){
             key_pressed.classList.remove("pressed");
         }, 200);
