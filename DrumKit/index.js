@@ -1,6 +1,18 @@
 // Using JQuery.
 
 
+// This will fade away the drum on which the mouse hovers.
+$(".drum").hover(function(){
+    var drum_hover = this.innerHTML;
+    $("."+drum_hover).animate({opacity: 0.5});
+});
+
+// This will restore the drum after the mouse leaves.
+$(".drum").mouseleave(function(){
+    var drum_hover = this.innerHTML;
+    $("."+drum_hover).animate({opacity: 1});
+});
+
 // This will add an event listener to those drum elements which will call the callback function
 // when a "drum" class element is clicked.
 $(".drum").click(function(){
@@ -12,7 +24,7 @@ $(".drum").click(function(){
 
 
 // This checks for Keyboard press.
-$(document).keypress(function(event){
+$(document).on("keypress", function(event){
 
     drum_sound(event.key);
     animate_button(event.key);
